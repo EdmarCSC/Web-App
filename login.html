@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="./css/login.css">
+    <title>web app</title>
+</head>
+<body>
+    <div class="continer-main">
+        <div class="container-form">
+            <h1>LOGIN</h1>
+            <form action="submit" class="form">
+                <input type="text" placeholder="Login">
+                <input type="text" placeholder="Senha">
+                <div>
+                    <button>Cancelar</button>
+                    <button>Entrar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-app.js";
+        import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.6.8/firebase-analytics.js";
+      
+        const firebaseConfig = {
+          apiKey: "AIzaSyCm45DUiUzrjFm4RHlwHOIozwCDUs5UHKM",
+          authDomain: "my-first-web-app-2c19d.firebaseapp.com",
+          projectId: "my-first-web-app-2c19d",
+          storageBucket: "my-first-web-app-2c19d.appspot.com",
+          messagingSenderId: "1021229371288",
+          appId: "1:1021229371288:web:b0106c7f173e92294fa5ed",
+          measurementId: "G-MENH1N7E69"      
+        };
+      
+        // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+        const analytics = getAnalytics(app);
+      </script>
+</body>
+</html>
