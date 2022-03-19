@@ -1,0 +1,151 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: 7px;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+.container-main {
+    display: flex;
+    flex-shrink: 1em;
+    flex-grow: 1em;
+    height: 100%;
+}
+
+.menu {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    z-index: 1;
+    border-style: groove;
+    height: 100vh;
+    width: 15%;
+    border-radius: 5px;
+    margin-left: -1000%;
+    transition: 0.3s;
+}
+
+.menu .container-menu {
+    margin-top: -50%;
+    background-color: yellow;
+}
+
+.menu .fechar-menu {
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.menu .fechar-menu .line {
+    border-radius: 10px;
+    background-color: black;
+    list-style: none;
+    width: 30px;
+    height: 3px;
+}
+
+.menu .fechar-menu .line1 {
+    transform: rotate(-45deg) translate(-22px, -2px);
+}
+
+.menu .fechar-menu .line2 {
+    transform: rotate(45deg) translate(20px, 1px);
+}
+
+.titulo-menu {
+    margin: 45% 0 60% 20%;
+}
+
+.menu .lista-menu {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    list-style: none;   
+}
+
+.menu .lista-menu .li-menu {
+    margin-bottom: 4em;
+}
+
+.container-left {
+    display: flex;
+    flex-direction: column;
+    border-style: groove;
+    height: 100%;
+    width: 10%;
+    border-radius: 5px;
+}
+
+.container-left .left-menu .logo-page {
+    margin-bottom: 150px;
+}
+
+.container-left .left-menu .nav-bar .list-menu {
+    list-style: none;
+}
+
+.container-left .left-menu .nav-bar .list-menu .ancor {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.container-left .left-menu .nav-bar .list-menu .lista-menu {
+    margin-top: 20px;
+}
+
+.container-left .left-menu .nav-bar .list-menu .icon {
+    display: flex;
+    flex-grow: 2em;
+    flex-shrink: 2em;
+    width: 32px;
+    height: 32px;
+}
+
+.conteiner-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100vw;
+    height: 100%;
+}
+
+.conteiner-center .container-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-style: groove;
+    width: 100%;
+    height: 100%;
+}
+
+.header {
+    display: flex;
+    border-style: groove;
+    height: 20%;
+    width: 100%;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 2em;
+    flex-shrink: 2em;
+    border-style: groove;
+    height: 20%;
+    width: 100%;
+    border-radius: 5px;
+}
