@@ -121,12 +121,11 @@
     function addElementosMenu(elemento) {        
         if (elemento.classList.contains('lista')) {        
             textoTituloMenu(elemento);
-        }
-
-        if (elemento.classList.contains('lista')) return;        
+        }else {
             componenteFecharMenu();
             criaTituloMenu(elemento);
             criaListaMenu(elemento);
+        }            
     }
     
     function abrirMenu() {

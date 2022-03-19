@@ -36,8 +36,10 @@
             for (i = 0; i < fornecedor.length; i++) {
                 const contForm = document.createElement('input');                
                 contForm.setAttribute('type', 'text');
+                contForm.setAttribute('placeholder',''+fornecedor[i]);
                 contForm.classList.add('input-cadastro');
                 divForm.appendChild(contForm);
+                console.log(contForm, fornecedor[i]);
             }
             form.appendChild(divForm);
         }
@@ -46,6 +48,7 @@
             for (i = 0; i < cliente.length; i++) {
                 const contForm = document.createElement('input');
                 contForm.setAttribute('type', 'text');
+                contForm.setAttribute('placeholder',''+cliente[i]);
                 contForm.classList.add('input-cadastro');
                 divForm.appendChild(contForm);
             }
@@ -56,6 +59,7 @@
             for (i = 0; i < Produto.length; i++) {
                 const contForm = document.createElement('input');
                 contForm.setAttribute('type', 'text');
+                contForm.setAttribute('placeholder',''+Produto[i]);
                 contForm.classList.add('input-cadastro');
                 divForm.appendChild(contForm);
             }
@@ -121,9 +125,19 @@
         }
     }
 
+    function criaBtnConsulta() {
+            const inpuConsultaForm = document.querySelector('.div-input-consulta')
+            const btnForm = document.createElement('button');
+            btnForm.classList.add('btn-form');
+            btnForm.classList.add(btn[0].toLocaleLowerCase());
+            btnForm.textContent = 'Pesquisar';
+            inpuConsultaForm.appendChild(btnForm);
+    }
+
     function criaBotton(elemento) {
         const footerForm = document.querySelector('.container-footer-form')
         const inpuConsultaForm = document.querySelector('.div-input-consulta')
+     
         for (i = 1; i < btn.length; i++) {
             const btnForm = document.createElement('button');
             btnForm.classList.add('btn-form');
@@ -131,34 +145,48 @@
             btnForm.textContent = btn[i];
             footerForm.appendChild(btnForm);
         }
-        
-        if (elemento.classList.contains('consulta')) {
-            const btnForm = document.createElement('button');
-            btnForm.classList.add('btn-form');
-            btnForm.classList.add(btn[0].toLocaleLowerCase());
-            inpuConsultaForm.appendChild(btnForm);
-        }
     } 
 
     function abrirFormulario(elemento) {
         const titulo = document.querySelector('.titulo-menu');
+        const divCa = document.querySelector('.div-form-cadastro');
+        const divCo = document.querySelector('.div-form-consulta');
 
-        if (titulo.classList.contains('cadastro')) {
-            const div = document.querySelector('.div-form-cadastro');
-            if (div != null) {
-                div.remove();
+        if (titulo.classList.contains('cadastro')) {       
+            if (divCa != null || divCo != null) {
+                if (divCo != null){
+                    console.log(divCa);
+                    divCo.remove();
+                    if (divCa != null){
+                        console.log(divCa);
+                        divCa.remove();
+                    }
+                    tituloForm(titulo); 
+                    formsCadastro(elemento);
+                }
+            }else{
+                tituloForm(titulo); 
+                formsCadastro(elemento);
+                criaBotton(titulo);
             }
-            console.log(div);
-
-            tituloForm(titulo); 
-            formsCadastro(elemento);
-            criaBotton(titulo);
         }
 
         if (titulo.classList.contains('consulta')) {
-            inputsConsulta(elemento);
-            tituloForm(titulo);
-            criaBotton(titulo);
+            if (divCa != null || divCo != null) {
+                if (divCa != null){
+                    divCa.remove();
+                    if (divCo != null){
+                        divCo.remove();
+                    }
+                    tituloForm(titulo);
+                    inputsConsulta(elemento);
+                    criaBtnConsulta()
+                } 
+            }else{
+                inputsConsulta(elemento);
+                tituloForm(titulo);
+                criaBotton(titulo);    
+            }
         }
     }
 
