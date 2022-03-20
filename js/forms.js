@@ -31,7 +31,6 @@
     function formsCadastro(elemento) {
         const divForm = document.createElement('div');
         divForm.classList.add('div-form-cadastro');
-
         if (elemento.classList.contains('fornecedor')) {
             for (i = 0; i < fornecedor.length; i++) {
                 const contForm = document.createElement('input');                
@@ -39,7 +38,6 @@
                 contForm.setAttribute('placeholder',''+fornecedor[i]);
                 contForm.classList.add('input-cadastro');
                 divForm.appendChild(contForm);
-                console.log(contForm, fornecedor[i]);
             }
             form.appendChild(divForm);
         }
@@ -98,7 +96,7 @@
             const contForm = document.createElement('input');                
             contForm.setAttribute('type', 'text');
             contForm.setAttribute('placeholder', 'Cliente');
-            contForm.classList.add('inputConsulta');
+            contForm.classList.add('input-consulta');
             
             criaDivInputConsulta(contForm);
         }
@@ -107,7 +105,7 @@
             const contForm = document.createElement('input');                
             contForm.setAttribute('type', 'text');
             contForm.setAttribute('placeholder', 'Produto');
-            contForm.classList.add('inputConsulta');
+            contForm.classList.add('input-consulta');
             
             criaDivInputConsulta(contForm);
         }   
@@ -129,6 +127,7 @@
             const inpuConsultaForm = document.querySelector('.div-input-consulta')
             const btnForm = document.createElement('button');
             btnForm.classList.add('btn-form');
+            btnForm.classList.add('btn-form-consulta');
             btnForm.classList.add(btn[0].toLocaleLowerCase());
             btnForm.textContent = 'Pesquisar';
             inpuConsultaForm.appendChild(btnForm);
@@ -155,10 +154,8 @@
         if (titulo.classList.contains('cadastro')) {       
             if (divCa != null || divCo != null) {
                 if (divCo != null){
-                    console.log(divCa);
                     divCo.remove();
                     if (divCa != null){
-                        console.log(divCa);
                         divCa.remove();
                     }
                     tituloForm(titulo); 
