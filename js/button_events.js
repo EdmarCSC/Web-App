@@ -23,9 +23,10 @@
     document.addEventListener('click', function(evento) {
         
         const el = evento.target;
-        if (el.classList.contains('.btn-form-salvar')) {
-            criaDivContentConsulta();
-        }
+        console.log(el);
+        /* if (el.classList.contains('btn-form-salvar')) {
+           
+        } */
          
     })
 })();
