@@ -177,12 +177,13 @@
                     }
                     tituloForm(titulo);
                     inputsConsulta(elemento);
-                    criaBtnConsulta()
+                    criaBtnConsulta();
                 } 
             }else{
                 inputsConsulta(elemento);
                 tituloForm(titulo);
-                criaBotton(titulo);    
+                criaBotton(titulo);
+                criaBtnConsulta();    
             }
         }
     }

@@ -23,10 +23,10 @@
     document.addEventListener('click', function(evento) {
         
         const el = evento.target;
-        console.log(el);
-        /* if (el.classList.contains('btn-form-salvar')) {
-           
-        } */
+        if (el.classList.contains('salvar') || el.classList.contains('editar') ||
+         el.classList.contains('cancelar') || el.classList.contains('excluir') || el.classList.contains('input-pesquisa')) {
+            console.log(el);
+        }
          
     })
 })();
