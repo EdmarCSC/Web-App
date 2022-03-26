@@ -69,7 +69,7 @@
         const inputValue = document.querySelector('.input-consulta');
         const p = document.createElement('p');
         p.classList.add('conteudo-consulta');
-        p.textContent = 'Conteúdo da consulta.';
+        p.textContent = 'Conteúdo da consulta...';
 
         criaDivContentConsulta(p);
     }
