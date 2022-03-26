@@ -154,7 +154,7 @@ a {
 
 .header {
     display: flex;
-    height: 80px;
+    height: 10%;
     width: 100%;
     align-items: center;
     justify-content: center;

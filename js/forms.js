@@ -65,12 +65,32 @@
         }
     }
 
+    function contentValue () {
+        const inputValue = document.querySelector('.input-consulta');
+        const p = document.createElement('p');
+        p.classList.add('conteudo-consulta');
+        p.textContent = 'Conteúdo da consulta.';
+
+        criaDivContentConsulta(p);
+    }
+    
+    function criaDivContentConsulta(elemento) {
+        const divFormCunsulta = document.querySelector('.div-form-consulta');
+        const content = document.createElement('div');
+        content.classList.add('div-form-conteudo-consulta');
+
+        content.appendChild(elemento);
+
+        divFormCunsulta.appendChild(content);
+    }
+
     function criaDivFormConsulta(elemento) {
         const divFormConsulta = document.createElement('div');
         divFormConsulta.classList.add('div-form-consulta');
         divFormConsulta.appendChild(elemento);
 
         form.appendChild(divFormConsulta);
+        contentValue();
     }
 
     function criaDivInputConsulta(elemento) {
