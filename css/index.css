@@ -24,9 +24,6 @@
 .Crevasse-4-hsla { background-color: hsla(151, 34, 90, 1); }
 .Crevasse-5-hsla { color: hsla(0, 0, 100, 1); }
 
-
-
-
 a {
     text-decoration: none;
     color: black;
@@ -55,12 +52,15 @@ a {
 }
 
 .menu .container-menu {
-    margin-top: -50%;
+    display: flex;
+    flex-direction: column;
+    margin-top: -30vh;
 }
 
 .menu .fechar-menu {
     display: flex;
     flex-direction: row-reverse;
+    margin-bottom: 4em;
 }
 
 .menu .fechar-menu .line {
@@ -80,11 +80,13 @@ a {
     transform: rotate(45deg) translate(20px, 1px);
 }
 
+
 .titulo-menu {
-    margin: 45% 0 60% 20%;
+    margin: auto;
+    padding-bottom: 5em;
 }
 
-.menu .lista-menu {
+.lista-menu {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -157,7 +159,56 @@ a {
     height: 10%;
     width: 100%;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+}
+
+.header h1 {
+    margin: auto;
+}
+
+.line-hmb1, .line-hmb2, .line-hmb3 {
+    list-style: none;
+}
+
+
+@media (max-width: 700px) {
+    .container-left {
+        display: none;
+    }
+
+    .container-content {
+        border-radius: 0;
+    }
+   
+    .menu-hamburguer {
+        display: flex;
+        flex-shrink: 2em;
+        margin-right: 1em;
+    }
+    
+    .line-hmb1 {
+        background-color: #FFFFFF;
+        list-style: none;
+        margin-bottom: 0.2em;
+        width: 28px;
+        height: 4px;
+    }
+    
+    .line-hmb2 {
+        background-color: #FFFFFF;
+        list-style: none;
+        margin-bottom: 0.2em;
+        width: 28px;
+        height: 4px;
+    }
+    
+    .line-hmb3 {
+        background-color: #FFFFFF;
+        list-style: none;
+        width: 28px;
+        height: 4px;
+    }
+    
 }
 
 .footer {

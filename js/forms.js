@@ -14,23 +14,11 @@
                     , 'Validade', 'Validade', 'Validade', 'Validade'];
 
     const btn = ['Pesquisar', 'Salvar', 'Editar', 'Cancelar', 'Excluir'];
- 
-    document.addEventListener('click', function(evento) {
-        const elemento = evento.target;
-
-        if (elemento.classList.contains('fornecedor') || elemento.classList.contains('cliente') 
-        || elemento.classList.contains('produto')) { 
-            
-            menuCadastro.style.marginLeft = `-${1000}px`;            
-            abrirFormulario(elemento);
-            
-
-        } 
-    });
 
     function formsCadastro(elemento) {
         const divForm = document.createElement('div');
         divForm.classList.add('div-form-cadastro');
+        divForm.classList.add('div-componente');
         if (elemento.classList.contains('fornecedor')) {
             for (i = 0; i < fornecedor.length; i++) {
                 const contForm = document.createElement('input');                
@@ -87,6 +75,7 @@
     function criaDivFormConsulta(elemento) {
         const divFormConsulta = document.createElement('div');
         divFormConsulta.classList.add('div-form-consulta');
+        divFormConsulta.classList.add('div-componente');
         divFormConsulta.appendChild(elemento);
 
         form.appendChild(divFormConsulta);
@@ -131,15 +120,15 @@
         }   
     }
 
-    function tituloForm(titulo) {
+    function tituloForm(titulo, elemento) {
         const text = document.querySelector('.titulo-form');
 
         if (titulo.classList.contains('cadastro'))  {
-            text.textContent = `Cadastro`;
+            text.textContent = `Cadastro de ${elemento.textContent.toLocaleLowerCase()}` ;
         }
 
         if (titulo.classList.contains('consulta'))  {
-            text.textContent = 'Consulta';
+            text.textContent = `Consulta de ${elemento.textContent.toLocaleLowerCase()}` ;
         }
     }
 
@@ -154,8 +143,8 @@
     }
 
     function criaBotton(elemento) {
-        const footerForm = document.querySelector('.container-footer-form')
-        const inpuConsultaForm = document.querySelector('.div-input-consulta')
+        const footerForm = document.querySelector('.container-footer-form');
+        const inpuConsultaForm = document.querySelector('.div-input-consulta');
      
         for (i = 1; i < btn.length; i++) {
             const btnForm = document.createElement('button');
@@ -168,44 +157,48 @@
 
     function abrirFormulario(elemento) {
         const titulo = document.querySelector('.titulo-menu');
-        const divCa = document.querySelector('.div-form-cadastro');
-        const divCo = document.querySelector('.div-form-consulta');
+        const divComponente = document.querySelector('.div-componente');
+
+        console.log(divComponente, elemento);
 
         if (titulo.classList.contains('cadastro')) {       
-            if (divCa != null || divCo != null) {
-                if (divCo != null){
-                    divCo.remove();
-                    if (divCa != null){
-                        divCa.remove();
-                    }
-                    tituloForm(titulo); 
-                    formsCadastro(elemento);
-                }
+            if (divComponente != null) {
+                    
+                divComponente.remove();
+                formsCadastro(elemento);
+                tituloForm(titulo, elemento); 
             }else{
-                tituloForm(titulo); 
+                tituloForm(titulo, elemento); 
                 formsCadastro(elemento);
                 criaBotton(titulo);
             }
         }
 
         if (titulo.classList.contains('consulta')) {
-            if (divCa != null || divCo != null) {
-                if (divCa != null){
-                    divCa.remove();
-                    if (divCo != null){
-                        divCo.remove();
-                    }
-                    tituloForm(titulo);
-                    inputsConsulta(elemento);
-                    criaBtnConsulta();
-                } 
+            if (divComponente != null) {
+
+                divComponente.remove();
+                tituloForm(titulo, elemento);
+                inputsConsulta(elemento);
+                criaBtnConsulta();
             }else{
                 inputsConsulta(elemento);
-                tituloForm(titulo);
+                tituloForm(titulo, elemento);
                 criaBotton(titulo);
                 criaBtnConsulta();    
             }
         }
     }
+
+    document.addEventListener('click', function(evento) {
+        const elemento = evento.target;
+
+        if (elemento.classList.contains('fornecedor') || elemento.classList.contains('cliente') 
+        || elemento.classList.contains('produto')) { 
+            
+            menuCadastro.style.marginLeft = `-${1000}px`;            
+            abrirFormulario(elemento);
+        } 
+    });
 
 })();
