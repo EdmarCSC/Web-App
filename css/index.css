@@ -41,49 +41,42 @@ a {
     position: absolute;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     z-index: 1;
     height: 100vh;
     width: 15%;
-    border-radius: 5px;
     margin-left: -1000%;
     transition: 0.3s;
-
 }
 
 .menu .container-menu {
     display: flex;
     flex-direction: column;
-    margin-top: -30vh;
 }
 
 .menu .fechar-menu {
-    display: flex;
-    flex-direction: row-reverse;
-    margin-bottom: 4em;
+    margin: 0.7em;
+    margin-left: 10em;
 }
 
 .menu .fechar-menu .line {
     border-radius: 10px;
-    background-color: black;
     list-style: none;
+    margin-top: 0.3em;
     width: 30px;
     height: 3px;
     background-color: #FFFFFF;
 }
 
 .menu .fechar-menu .line1 {
-    transform: rotate(-45deg) translate(-22px, -2px);
 }
 
 .menu .fechar-menu .line2 {
-    transform: rotate(45deg) translate(20px, 1px);
 }
 
 
 .titulo-menu {
     margin: auto;
-    padding-bottom: 5em;
+    padding-bottom: 2.6em;
 }
 
 .lista-menu {
@@ -156,7 +149,7 @@ a {
 
 .header {
     display: flex;
-    height: 10%;
+    height: 15%;
     width: 100%;
     align-items: center;
     justify-content: space-around;
@@ -217,6 +210,6 @@ a {
     align-items: center;
     flex-grow: 2em;
     flex-shrink: 2em;
-    height: 80px;
+    height: 15%;
     width: 100%;
 }

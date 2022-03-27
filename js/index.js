@@ -20,20 +20,15 @@
 
     function componenteFecharMenu() {
         const ul = document.createElement('ul');
-        const li1 = document.createElement('li');
-        const li2 = document.createElement('li');
-
-        ul.appendChild(li1);
-        ul.appendChild(li2);
-
         ul.classList.add('fechar-menu');
-        li1.classList.add('line');
-        li1.classList.add('line1');
-        li2.classList.add('line');
-        li2.classList.add('line2');
 
+        for (i = 1; i < 4; i++) {
+            const li = document.createElement('li');
+            li.classList.add('line');
+            li.classList.add(`line${1}`);
+            ul.appendChild(li);
+        }
         containerMenu.appendChild(ul);
-
     }
 
     function textoTituloMenu(elemento) {
