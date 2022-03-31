@@ -42,8 +42,9 @@ a {
     display: flex;
     flex-direction: column;
     z-index: 1;
+    min-width: 100px;
     height: 100vh;
-    width: 15%;
+    width: 40vw;
     margin-left: -1000%;
     transition: 0.3s;
 }
@@ -54,6 +55,7 @@ a {
 }
 
 .menu .fechar-menu {
+    align-items: center;
     margin: 0.7em;
     margin-left: 10em;
 }
@@ -68,11 +70,16 @@ a {
 }
 
 .menu .fechar-menu .line1 {
+    position: relative;
+    margin: auto;
+    transform: rotate(-45deg);
 }
 
 .menu .fechar-menu .line2 {
+    position: relative;
+    margin: auto;
+    transform: rotate(45deg);
 }
-
 
 .titulo-menu {
     margin: auto;
@@ -176,7 +183,7 @@ a {
     .menu-hamburguer {
         display: flex;
         flex-shrink: 2em;
-        margin-right: 1em;
+        margin-left: 1em;
     }
     
     .line-hmb1 {

@@ -7,8 +7,10 @@
 
     document.addEventListener('click', function(evento) {
         const elemento = evento.target;
+        
+        if (elemento.classList.contains('icon-cadastro') || elemento.classList.contains('icon-consulta') ||
+            elemento.classList.contains('line-hmb2')) {             
 
-        if (elemento.classList.contains('icon-cadastro') || elemento.classList.contains('icon-consulta')) {             
             abrirMenu();
             addElementosMenu(elemento);
         }
@@ -22,10 +24,10 @@
         const ul = document.createElement('ul');
         ul.classList.add('fechar-menu');
 
-        for (i = 1; i < 4; i++) {
+        for (i = 1; i < 3; i++) {
             const li = document.createElement('li');
             li.classList.add('line');
-            li.classList.add(`line${1}`);
+            li.classList.add(`line${i}`);
             ul.appendChild(li);
         }
         containerMenu.appendChild(ul);
@@ -120,7 +122,9 @@
             componenteFecharMenu();
             criaTituloMenu(elemento);
             criaListaMenu(elemento);
-        }            
+        }
+        
+        console.log(elemento);
     }
     
     function abrirMenu() {
