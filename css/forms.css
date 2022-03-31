@@ -35,23 +35,20 @@
 
 .container-form .container-form-content .div-form-cadastro {
     display: flex;
-    justify-content: flex-start;
     flex-wrap: wrap;
     width: 80%;
     height: 70%;
     overflow-y: scroll;
-    flex-shrink: 3rem;
 }
 
 .container-form .container-form-content .div-form-cadastro .input-cadastro {
-    position: relative;
-    display: flex;
-    margin: auto;
+    align-content: flex-start;
+    flex-shrink: 3rem;
     margin-top: 3em;
+    margin-right: 0.5em;
     width: 200px;
     height: 20px;
     border-radius: 5px;
-    padding: 2px;
     border-style: groove;
     border-color: #FFFFFF;;
     color: #002333;
