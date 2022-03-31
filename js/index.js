@@ -1,4 +1,5 @@
 (function() {
+    const lineHmb2 = document.querySelector('.line-hmb2');
     const containerMenu = document.querySelector('.container-menu');
     const btnCadastro = document.querySelector('.icon-cadastro');
     const btnConsulta = document.querySelector('.icon-consulta');
@@ -21,16 +22,18 @@
     });
 
     function componenteFecharMenu() {
-        const ul = document.createElement('ul');
-        ul.classList.add('fechar-menu');
+        const div = document.createElement('div');
+        div.classList.add('fechar-menu');
 
         for (i = 1; i < 3; i++) {
-            const li = document.createElement('li');
-            li.classList.add('line');
-            li.classList.add(`line${i}`);
-            ul.appendChild(li);
+            const line = document.createElement('div');
+            line.classList.add('line');
+            line.classList.add(`line${i}`);
+            line.classList.add('lista');
+            div.appendChild(line);
         }
-        containerMenu.appendChild(ul);
+        lineHmb2.classList.add('lista');
+        containerMenu.appendChild(div);
     }
 
     function textoTituloMenu(elemento) {
