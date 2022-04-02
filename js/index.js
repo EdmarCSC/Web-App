@@ -127,7 +127,6 @@
             criaListaMenu(elemento);
         }
         
-        console.log(elemento);
     }
     
     function abrirMenu() {

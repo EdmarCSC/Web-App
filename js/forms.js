@@ -144,7 +144,6 @@
 
     function criaBotton(elemento) {
         const footerForm = document.querySelector('.container-footer-form');
-        const inpuConsultaForm = document.querySelector('.div-input-consulta');
      
         for (i = 1; i < btn.length; i++) {
             const btnForm = document.createElement('button');
@@ -158,8 +157,6 @@
     function abrirFormulario(elemento) {
         const titulo = document.querySelector('.titulo-menu');
         const divComponente = document.querySelector('.div-componente');
-
-        console.log(divComponente, elemento);
 
         if (titulo.classList.contains('cadastro')) {       
             if (divComponente != null) {
