@@ -13,7 +13,7 @@
                     , 'Validade', 'Validade', 'Validade', 'Validade', 'Validade', 'Validade'
                     , 'Validade', 'Validade', 'Validade', 'Validade'];
 
-    const btn = ['Pesquisar', 'Salvar', 'Editar', 'Cancelar', 'Excluir'];
+    const btn = ['Pesquisar', 'Salvar', 'Cancelar'];
 
     function formsCadastro(elemento) {
         const divForm = document.createElement('div');

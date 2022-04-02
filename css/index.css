@@ -177,15 +177,14 @@ a {
    
     .menu-hamburguer {
         display: flex;
-        flex-shrink: 2em;
         justify-content: flex-start;
-        margin: auto;
+        margin-left: 1em;
     }
     
     .line-hmb1 {
         background-color: #FFFFFF;
-        list-style: none;
         margin-bottom: 0.3em;
+        list-style: none;
         width: 28px;
         height: 4px;
     }
@@ -204,6 +203,7 @@ a {
         width: 28px;
         height: 4px;
     }
+
     
 }
 
