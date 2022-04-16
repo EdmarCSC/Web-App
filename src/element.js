@@ -6,21 +6,6 @@
     const textCadastro = 'Cadastro';
     const textConsulta = 'Consulta';
 
-    document.addEventListener('click', function(evento) {
-        const elemento = evento.target;
-        
-        if (elemento.classList.contains('icon-cadastro') || elemento.classList.contains('icon-consulta') ||
-            elemento.classList.contains('line-hmb2')) {             
-
-            abrirMenu();
-            addElementosMenu(elemento);
-        }
-        
-        if (elemento.classList.contains('line')) {
-            fecharMenu();
-        }
-    });
-
     function componenteFecharMenu() {
         const div = document.createElement('div');
         div.classList.add('fechar-menu');
@@ -139,5 +124,19 @@
 
         menuCadastro.style.marginLeft = `-${1000}px`;
     }
+
+    document.addEventListener('click', function(evento) {
+        const elemento = evento.target;
+        
+        if (elemento.classList.contains('icon-cadastro') || elemento.classList.contains('icon-consulta') ||
+            elemento.classList.contains('line-hmb2')) {             
+            abrirMenu();
+            addElementosMenu(elemento);
+        }
+    
+        if (elemento.classList.contains('line')) {
+            fecharMenu();
+        }
+    });
 
 })();
