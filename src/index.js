@@ -35,7 +35,6 @@ function writeUserData(obj, name, el) {
         comprador: obj.comprador, 
         vendedor: obj.vendedor
     });
-    console.log(obj);
   }
 
 function enviarData(elemento, el) {
@@ -68,7 +67,7 @@ function linparInputs() {
 }
 
 function pesquisarDada() {
-  let dado = document.querySelector('.input-consulta');  
+  let dado = document.querySelector('.input-consulta').value;  
   let content = document.querySelector('.conteudo-consulta');
   const dbRef = ref(getDatabase());
     get(dbRef, `fornecedores/${dado}`).then((snapshot) => {
@@ -94,11 +93,9 @@ function etiqueta(valor) {
     if (etqCadastro.classList.contains('cliente'))  el = 'clientes';
     if (etqCadastro.classList.contains('produto'))  el = 'produtos';
     if (etqCadastro.classList.contains('pedido'))  el = 'pedidos';
-    console.log(etqConsulta);
     enviarData(valor, el);
   }else {
     pesquisarDada();
-    console.log(etqConsulta);
   }
     
 }

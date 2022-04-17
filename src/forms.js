@@ -27,6 +27,7 @@
         const divForm = document.createElement('div');
         divForm.classList.add('div-form-cadastro');
         divForm.classList.add('div-componente');
+        
         if (elemento.classList.contains('fornecedor')) {
             for (i = 0; i < fornecedor.length; i++) {
                 const contForm = document.createElement('input');                
@@ -66,15 +67,16 @@
 
     function formPedidos() {
         const divForm = document.createElement('div');
-        divForm.classList.add('div-form-pedidos');
+        divForm.classList.add('div-form-cadastro');
         divForm.classList.add('div-componente');
         
         for (i = 0; i < pedidos.length; i++) {
             const contForm = document.createElement('input');                
             contForm.setAttribute('type', 'text');
             contForm.setAttribute('placeholder',''+pedidos[i]);
-            contForm.classList.add(`input-pedido${i}`);
+            contForm.classList.add(`input-cadastro${i}`);
             contForm.classList.add('input-pedidos');
+            contForm.classList.add('input-cadastro');
             divForm.appendChild(contForm);
         }
         form.appendChild(divForm);
@@ -156,7 +158,13 @@
         }
 
         if (titulo.classList.contains('consulta'))  {
-            text.textContent = `Consulta de ${elemento.textContent.toLocaleLowerCase()}` ;
+            text.classList.add(elemento.textContent.toLocaleLowerCase());
+            text.textContent = `Consulta de ${elemento.textContent.toLocaleLowerCase()}`;
+        }
+
+        if (titulo.classList.contains('pedidos'))  {
+            text.classList.add('pedido');
+            text.textContent = 'Cadastro de pedidos';
         }
     }
 
@@ -180,7 +188,24 @@
             btnForm.textContent = btn[i];
             footerForm.appendChild(btnForm);
         }
-    } 
+    }
+    
+    function abrirFrmPedidos(elemento) {
+        const divComponente = document.querySelector('.div-componente');
+        const titulo = document.querySelector('.pedidos');
+
+        if (elemento.classList.contains('pedidos')) {       
+            if (divComponente != null) {
+                divComponente.remove();
+                formPedidos(elemento);
+                tituloForm(titulo, elemento); 
+            }else{
+                tituloForm(titulo, elemento); 
+                formPedidos(titulo, elemento);
+                criaBotton(titulo);
+            }
+        }
+    }
 
     function abrirFormulario(elemento) {
         const titulo = document.querySelector('.titulo-menu');
@@ -194,7 +219,7 @@
             }else{
                 tituloForm(titulo, elemento); 
                 formsCadastro(elemento);
-                criaBotton();
+                criaBotton(titulo);
             }
         }
 
@@ -203,13 +228,13 @@
                 divComponente.remove();
                 tituloForm(titulo, elemento);
                 inputsConsulta(elemento);
-                criaBtnConsulta();
             }else{
                 inputsConsulta(elemento);
                 tituloForm(titulo, elemento);
                 criaBtnConsulta();    
             }
         }
+
     }
 
     document.addEventListener('click', function(evento) {
@@ -217,12 +242,12 @@
 
         if (elemento.classList.contains('fornecedor') || elemento.classList.contains('cliente') 
         || elemento.classList.contains('produto')) {        
-            menuCadastro.style.marginLeft = `-${1000}px`;            
+            menuCadastro.style.marginLeft = `-${1000}px`;
             abrirFormulario(elemento);
         } 
 
         if (elemento.classList.contains('icon-pedido')) {             
-            formPedidos();
+            abrirFrmPedidos(elemento);
         }
     });
 

@@ -50,18 +50,6 @@
     overflow-y: scroll;
 }
 
-.div-form-pedidos {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 3em;
-    background-color: #159a9c33;
-    border-radius: 6px;
-    width: 85%;
-    height: 70%;
-    overflow-y: scroll;
-}
-
 @media (max-width: 1024px){
     .container-form .container-form-content .div-form-cadastro {
         justify-content: center;
@@ -89,23 +77,6 @@
     color: #002333;
     box-shadow: inset 10px 10px 100px 40px rgba(179, 189, 200, 0.2);
 }
-
-.input-pedidos {
-    align-content: flex-start;
-    flex-shrink: 3rem;
-    flex-grow: 3em;
-    margin-top: 2em;
-    min-width: 250px;
-    width: 30%;
-    height: 40px;
-    border-radius: 5px;
-    border-style: groove;
-    border-color: #FFFFFF;;
-    color: #002333;
-    box-shadow: inset 10px 10px 100px 40px rgba(179, 189, 200, 0.2);
-}
-
-
 
 .container-form .container-form-content .div-form-consulta {
     display: flex;
