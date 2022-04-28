@@ -7,9 +7,8 @@
                          'tipo', 'produto', 'comprador', 'vendedor'
     ];
     
-    const pedidos = ['Razão-social', 'Nome-fantasia', 'CNPJ', 'Rua', 
-                    'numero', 'cidade', 'estado', 'telefone', 'e-mail', 'inscricao',
-                    'tipo', 'produto', 'comprador', 'vendedor'
+    const pedidos = ['Nome', 'CNPJ', 'Contato', 'Codigo', 
+
     ];
 
     const cliente = ['Nome', 'CPF', 'E-MAIL', 'Telefone', 'Telefone', 'Telefone', 'Telefone', 'Telefone',
@@ -23,7 +22,7 @@
 
     const btn = ['Pesquisar', 'Salvar', 'Cancelar'];
 
-    function formsCadastro(elemento) {
+    function formCadastro(elemento) {
         const divForm = document.createElement('div');
         divForm.classList.add('div-form-cadastro');
         divForm.classList.add('div-componente');
@@ -63,23 +62,67 @@
             }
             form.appendChild(divForm);
         }
+
+        if (elemento.classList.contains('pedido')) {            
+            for (i = 0; i < cliente.length; i++) {
+                const contForm = document.createElement('input');
+                contForm.setAttribute('type', 'text');
+                contForm.setAttribute('placeholder',''+pedidos[i]);
+                contForm.classList.add(`input-pedido${i}`);
+                contForm.classList.add('input-cadastro');
+                divForm.appendChild(contForm);
+            }
+            form.appendChild(divForm);
+        }
     }
+    
 
     function formPedidos() {
-        const divForm = document.createElement('div');
-        divForm.classList.add('div-form-cadastro');
-        divForm.classList.add('div-componente');
-        
-        for (i = 0; i < pedidos.length; i++) {
+        const divFormPed = document.createElement('div');
+        const divHeaderPed = document.createElement('div');
+        const divInputCodPed = document.createElement('div');
+        const divListPed = document.createElement('div');
+        const btnAddPed = document.createElement('button');
+        const line = document.createElement('hr');
+
+        divFormPed.classList.add('div-componente');
+        divFormPed.classList.add('div-form-ped');
+
+
+        divHeaderPed.classList.add('div-input-header-cad');
+        divInputCodPed.classList.add('div-input-cod-cad');
+        divListPed.classList.add('div-lista-ped');
+        btnAddPed.classList.add('btn-add-ped');
+        line.classList.add('div-line-ped');
+
+        for (i = 0; i < pedidos.length -1; i++) {
             const contForm = document.createElement('input');                
             contForm.setAttribute('type', 'text');
             contForm.setAttribute('placeholder',''+pedidos[i]);
             contForm.classList.add(`input-cadastro${i}`);
-            contForm.classList.add('input-pedidos');
             contForm.classList.add('input-cadastro');
-            divForm.appendChild(contForm);
+            divHeaderPed.appendChild(contForm);
         }
-        form.appendChild(divForm);
+        divFormPed.appendChild(divHeaderPed);
+        btnAddPed.innerHTML = 'Adicionar item';
+        
+        divFormPed.appendChild(line);
+
+        const contForm = document.createElement('input');                
+        contForm.setAttribute('type', 'text');
+        contForm.setAttribute('placeholder',''+pedidos[i]);
+        contForm.classList.add(`input-cadastro3`);
+        contForm.classList.add('input-pedidos');
+        contForm.classList.add('input-cadastro');
+        divInputCodPed.appendChild(contForm);
+        divInputCodPed.appendChild(btnAddPed);
+
+
+        divFormPed.appendChild(divInputCodPed);
+        
+        divFormPed.appendChild(divListPed);
+
+        form.appendChild(divFormPed);
     }
 
     function contentValue () {
@@ -94,9 +137,13 @@
     function criaDivContentConsulta(elemento) {
         const divFormCunsulta = document.querySelector('.div-form-consulta');
         const content = document.createElement('div');
+        const divElementoConsulta = document.createElement('div');
+        
         content.classList.add('div-form-conteudo-consulta');
-
-        content.appendChild(elemento);
+        divElementoConsulta.classList.add('div-elemento-consulta');
+        
+        divElementoConsulta.appendChild(elemento);
+        content.appendChild(divElementoConsulta);
 
         divFormCunsulta.appendChild(content);
     }
@@ -162,9 +209,10 @@
             text.textContent = `Consulta de ${elemento.textContent.toLocaleLowerCase()}`;
         }
 
-        if (titulo.classList.contains('pedidos'))  {
+        if (titulo.classList.contains('cad-ped'))  {
+            // Linha comentada por motivo de o elemento estar vazio...
             text.classList.add('pedido');
-            text.textContent = 'Cadastro de pedidos';
+            text.textContent = `Cadastro de pedido`;
         }
     }
 
@@ -189,20 +237,20 @@
             footerForm.appendChild(btnForm);
         }
     }
-    
-    function abrirFrmPedidos(elemento) {
-        const divComponente = document.querySelector('.div-componente');
-        const titulo = document.querySelector('.pedidos');
 
-        if (elemento.classList.contains('pedidos')) {       
+    function abrirPedido(elemento) {
+        const tituloCad = document.querySelector('.icon-pedido');
+        const divComponente = document.querySelector('.div-componente');
+
+        if (tituloCad.classList.contains('cad-ped')) {       
             if (divComponente != null) {
                 divComponente.remove();
                 formPedidos(elemento);
-                tituloForm(titulo, elemento); 
+                tituloForm(tituloCad, elemento); 
             }else{
-                tituloForm(titulo, elemento); 
-                formPedidos(titulo, elemento);
-                criaBotton(titulo);
+                tituloForm(tituloCad, elemento); 
+                formPedidos(elemento);
+                criaBotton(tituloCad);
             }
         }
     }
@@ -214,11 +262,11 @@
         if (titulo.classList.contains('cadastro')) {       
             if (divComponente != null) {
                 divComponente.remove();
-                formsCadastro(elemento);
+                formCadastro(elemento);
                 tituloForm(titulo, elemento); 
             }else{
                 tituloForm(titulo, elemento); 
-                formsCadastro(elemento);
+                formCadastro(elemento);
                 criaBotton(titulo);
             }
         }
@@ -228,6 +276,7 @@
                 divComponente.remove();
                 tituloForm(titulo, elemento);
                 inputsConsulta(elemento);
+                criaBtnConsulta();
             }else{
                 inputsConsulta(elemento);
                 tituloForm(titulo, elemento);
@@ -242,12 +291,15 @@
 
         if (elemento.classList.contains('fornecedor') || elemento.classList.contains('cliente') 
         || elemento.classList.contains('produto')) {        
-            menuCadastro.style.marginLeft = `-${1000}px`;
+     
             abrirFormulario(elemento);
+            menuCadastro.style.marginLeft = `-${1000}px`;
         } 
 
-        if (elemento.classList.contains('icon-pedido')) {             
-            abrirFrmPedidos(elemento);
+        if (elemento.classList.contains('pedido')) {             
+            abrirPedido(elemento);
+            menuCadastro.style.marginLeft = `-${1000}px`;
+
         }
     });
 

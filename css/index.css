@@ -95,7 +95,7 @@ a {
     display: flex;
     flex-direction: column;
     height: 100vh;
-    width: 80px;
+    width: 9%;
 }
 
 .container-left .left-menu .logo-page {
@@ -131,22 +131,20 @@ a {
     background-color: #DEEFE7;
 }
 
-.conteiner-center {
+.container-center {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     width: 100vw;
-    height: 100vh;
+    height: 90%;
 }
 .container-content {
     display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: center;
     border-radius: 10px 0 0 10px;
     width: 100%;
-    height: 100%;
+    height: 85%;
 }
 
 .header {
@@ -207,12 +205,9 @@ a {
     
 }
 
-.footer {
+.rodape {
     display: flex;
     justify-content: center;
     align-items: center;
-    flex-grow: 2em;
-    flex-shrink: 2em;
-    height: 15%;
     width: 100%;
 }

@@ -57,8 +57,8 @@
     }
 
     function criaListaMenu(elemento) {
-        const listaCadastro = ['Fornecedor', 'Cliente', 'Produto'];
-        const listaCusulta = ['Fornecedor', 'Cliente', 'Produto'];
+        const listaCadastro = ['Fornecedor', 'Cliente', 'Produto', 'pedido'];
+        const listaCusulta = ['Fornecedor', 'Cliente', 'Produto', 'pedido'];
         const containerMenu = document.querySelector('.container-menu');
 
         const ul = document.createElement('ul');
