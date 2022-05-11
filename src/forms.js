@@ -257,33 +257,43 @@
 
     function abrirFormulario(elemento) {
         const titulo = document.querySelector('.titulo-menu');
-        const divComponente = document.querySelector('.div-componente');
 
         if (titulo.classList.contains('cadastro')) {       
-            if (divComponente != null) {
-                divComponente.remove();
-                formCadastro(elemento);
-                tituloForm(titulo, elemento); 
-            }else{
-                tituloForm(titulo, elemento); 
-                formCadastro(elemento);
-                criaBotton(titulo);
-            }
+            formCadastro(elemento);
+            tituloForm(titulo, elemento); 
+            criaBotton(titulo);
+            return
         }
 
         if (titulo.classList.contains('consulta')) {
-            if (divComponente != null) {
-                divComponente.remove();
-                tituloForm(titulo, elemento);
-                inputsConsulta(elemento);
-                criaBtnConsulta();
-            }else{
-                inputsConsulta(elemento);
-                tituloForm(titulo, elemento);
-                criaBtnConsulta();    
-            }
+            tituloForm(titulo, elemento);
+            inputsConsulta(elemento);
+            criaBtnConsulta();
+            return
         }
 
+    }
+
+    function limparInput() {
+        const inputs = document.querySelectorAll('.input-cadastro');
+        inputs.forEach(input =>{
+            input.value = '';
+        });
+    }
+
+    function limparPagina() {
+        const tituloForm = document.querySelector('.titulo-form');
+        const divCenter = document.querySelector('.div-componente');
+        const btns = document.querySelectorAll('.btn-form');
+
+        if (divCenter != null){
+            tituloForm.textContent = '';
+            divCenter.remove();
+            btns.forEach(el => {
+                el.remove();
+            });
+            console.log('Alo...')
+        }
     }
 
     document.addEventListener('click', function(evento) {
@@ -291,15 +301,28 @@
 
         if (elemento.classList.contains('fornecedor') || elemento.classList.contains('cliente') 
         || elemento.classList.contains('produto')) {        
-     
+            limparPagina();
             abrirFormulario(elemento);
             menuCadastro.style.marginLeft = `-${1000}px`;
         } 
 
         if (elemento.classList.contains('pedido')) {             
+            limparPagina();
             abrirPedido(elemento);
             menuCadastro.style.marginLeft = `-${1000}px`;
 
+        }
+
+        if (elemento.classList.contains('icon-casa')) {             
+            limparPagina();
+        }
+
+        if (elemento.classList.contains('cancelar')) {             
+            limparInput();
+        }
+
+        if (elemento.classList.contains('btn-add-ped')) {             
+            limparInput();
         }
     });
 

@@ -13,23 +13,19 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig); 
 
-const propObjet = ['Razão-social', 'Nome-fantasia', 'CNPJ', 'Rua', 
-                  'numero', 'cidade', 'estado', 'telefone', 'e-mail', 'inscricao',
-                  'tipo', 'produto', 'comprador', 'vendedor'];
+const itensPedido = [];
 
 
 function writeUserData(data, name, el) {
   const db = getDatabase();
 
   if (el === 'pedidos') {
-    console.log(el);
     push(ref(db, `${el}/${name}`), {
       nome: data.nome,
       CNPJ: data.CNPJ,
       contato: data.contato,
       listaPedido: data.listaPedido
     });    
-    console.log(el);
   }else {
     push(ref(db, `${el}/${name}`), {
       Razaosocial: data.Razaosocial, 
@@ -124,24 +120,45 @@ function pesquisarDada(valoer, el) {
   let input = document.querySelector('.input-consulta');  
   let content = document.querySelector('.conteudo-consulta');
   const dbRef = ref(getDatabase());
-    get(child(dbRef, `${el}/${input.value}`)).then((snapshot) => {
-      console.log(el);
-      if (snapshot.exists()) {
-        const el = Object.values(snapshot.val());
-        el.forEach(element => {
-          content.textContent += element.Nomefantasia+' ';
-          content.textContent += element.Razaosocial+' ';
-          content.textContent += element.CNPJ+' ';
-          content.textContent += element.numero+' ';
-        });
-        alterarElemento(content);  
-        input.value = '';
-      } else {
-        console.log("No data available");
-      }
-    }).catch((error) => {
-        console.error(error);
-        input.value = '';
+  get(child(dbRef, `${el}/${input.value}`)).then((snapshot) => {
+    if (snapshot.exists()) {
+      const el = Object.values(snapshot.val());
+      el.forEach(element => {
+        content.textContent = element.Nomefantasia+' ';
+        content.textContent += element.Razaosocial+' ';
+        content.textContent += element.CNPJ+' ';
+        content.textContent += element.numero+' ';
+      });
+      alterarElemento(content);  
+      input.value = '';
+    } else {
+      console.log("No data available");
+    }
+  }).catch((error) => {
+      console.error(error);
+      input.value = '';
+  });
+}
+
+function listarIntens(el) {
+  const telaItens = document.querySelector('.div-lista-ped');
+  const inputPed = document.querySelector('.input-pedidos');
+  const dbRef = ref(getDatabase());
+  get(child(dbRef, `${el}/${inputPed.value}`)).then((snapshot) => {
+    if (snapshot.exists()) {
+      const el = Object.values(snapshot.val());
+      el.forEach(element => {
+        console.log(element);
+        console.log(val);
+      });
+      //alterarElemento(content);  
+      inputPed.value = '';
+    } else {
+      console.log("No data available");
+    }
+  }).catch((error) => {
+      console.error(error);
+      inputPed.value = '';
   });
 }
 
@@ -155,7 +172,6 @@ function etiqueta(valor) {
     if (etqCadastro.classList.contains('cliente'))  el = 'clientes';
     if (etqCadastro.classList.contains('produto'))  el = 'produtos';
     if (etqCadastro.classList.contains('pedido'))  el = 'pedidos';
-    console.log(valor, etqCadastro);
     enviarData(valor, el);
   }else {
     if (etqCadastro.classList.contains('fornecedor'))  el = 'fornecedores';
@@ -167,23 +183,17 @@ function etiqueta(valor) {
     
 }
 
-function criaPedido(pedido) {
-  
-
-  //etiqueta(propPedido);
-}
-
 document.addEventListener('click', function(evento) {
     
   const el = evento.target;
   if (el.classList.contains('salvar')) {
     const valor = [];
     const inputAll = document.querySelectorAll('.input-cadastro');
-    for(i = 0; i < inputAll.length; i++) {
-        let inpsValue = document.querySelector(`.input-cadastro${i}`).value;
-        valor.push(inpsValue);
-    }            
+    inputAll.forEach(input => {
+      valor.push(input.value);
+    });       
     etiqueta(valor);
+
   }
 
   if (el.classList.contains('btn-form-consulta')) {
@@ -191,15 +201,8 @@ document.addEventListener('click', function(evento) {
   }
 
   if (el.classList.contains('btn-add-ped')) {
-    const inputAllPed = document.querySelectorAll('.input-cadastro');
-    const pedido = [];
-    for(i = 0; i < inputAllPed.length -1; i++) {
-      let valuePed = document.querySelector(`.input-cadastro${i}`).value;
-      pedido.push(valuePed);
-    }
+    listarIntens('produtos');
 
-    etiqueta(pedido);
-    //criaPedido(pedido);
-    linparInputs();
+    //etiqueta(pedido);
   }
 });
