@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     color: #FFFFFF;
+    font-family: 'Roboto', sem serifa;
 }
 /* Color Theme Swatches in Hex */
 .Crevasse-1-hex { color: #B4BEC9; }
@@ -46,19 +47,19 @@ a {
     transition: 0.3s;
 }
 
-.menu .container-menu {
+.container-menu {
     display: flex;
     flex-direction: column;
     width: 100%;
 }
 
-.menu .fechar-menu {
+.fechar-menu {
     display: flex;
     justify-content: flex-end;
     margin: 1.3em;
 }
 
-.menu .fechar-menu .line {
+.line {
     flex-shrink: 3em;
     flex-grow: 3em;
     border-radius: 10px;
@@ -67,11 +68,11 @@ a {
     background-color: #FFFFFF;
 }
 
-.menu .fechar-menu .line1 {
+.line1 {
     transform: rotate(-45deg) translate(2em, 2em);
 }
 
-.menu .fechar-menu .line2 {
+.line2 {
     transform: rotate(45deg) translate(0.7em, -0.6em);
 }
 
@@ -87,7 +88,7 @@ a {
     list-style: none;   
 }
 
-.menu .lista-menu .li-menu {
+.li-menu {
     margin-bottom: 4em;
 }
 
@@ -98,26 +99,26 @@ a {
     width: 9%;
 }
 
-.container-left .left-menu .logo-page {
+.logo-page {
     flex-shrink: 3em;
     margin-bottom: 150px;
 }
 
-.container-left .left-menu .nav-bar .list-menu {
+.list-menu {
     list-style: none;
 }
 
-.container-left .left-menu .nav-bar .list-menu .ancor {
+.ancor {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-.container-left .left-menu .nav-bar .list-menu .lista-menu {
+.lista-menu {
     margin-top: 20px;
 }
 
-.container-left .left-menu .nav-bar .list-menu .icon {
+.icon {
     display: flex;
     flex-grow: 2em;
     flex-shrink: 2em;
@@ -159,7 +160,7 @@ a {
     margin: auto;
 }
 
-.line-hmb1, .line-hmb2, .line-hmb3 {
+.line-hmb3 {
     list-style: none;
 }
 

@@ -20,7 +20,6 @@
     align-content: center;
     flex-shrink: 2em;
     flex-grow: 2em;
-    margin-top: 10px;
 }
 .container-form-content {
     display: flex;
@@ -36,17 +35,21 @@
     height: 100%;
 }
 
+.div-componente {
+    align-self: flex-start;
+    height: auto;    
+}
+
 .div-form-cadastro {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 0.1em;
+    padding: 1em;
     gap: 1em;
-    margin-top: 1%;
     background-color: #159a9c4b;
     border-radius: 6px;
-    width: 90%;
+    width: 78%;
     height: 90%;
     overflow-y: scroll;
 }
@@ -93,7 +96,6 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    padding: 0.1em;
     gap: 1em;
     margin-top: 1%;
     background-color: #159a9c4b;
@@ -105,13 +107,17 @@
 
 .div-input-header-cad {
     display: flex;
-    justify-content: space-around;
+    justify-content: centers;
     width: 100%;
+    height: auto;
+    flex-wrap: wrap;
     margin: 2px;
-    padding: 2px;
+    padding: 1.6em;
+    gap: 4.3em;
 }
 
 .div-line-ped {
+    margin-top: -2em;
     width: 93%;
     size: 1px;
     height: 2px;
@@ -121,10 +127,25 @@
 .div-input-cod-cad {
     display: flex;
     justify-content: space-between;
+    margin-top: -1em;
     width: 100%;
-    margin-top: -2.5em;
     padding-left: 2em;
     padding-right: 2em;
+}
+
+.input-pedidos {
+    align-content: flex-start;
+    flex-shrink: 2rem;
+    flex-grow: 2em;
+    margin-top: 0.2em;
+    min-width: 250px;
+    width: 25%;
+    height: 30px;
+    border-radius: 5px;
+    border-style: groove;
+    border-color: #FFFFFF;;
+    color: #002333;
+    box-shadow: inset 10px 10px 100px 40px rgba(179, 189, 200, 0.2);   
 }
 
 .btn-add-ped {
@@ -144,6 +165,7 @@
 .div-lista-ped {
     display: flex;
     align-content: center;
+    flex-direction: column;
     width: 93%;
     height: 10em;
     border-radius: 15px;
@@ -152,6 +174,24 @@
     box-shadow: inset 10px 10px 100px 2px rgba(179, 189, 200, 0.4);
     border-style: groove;
     border-color: rgba(0, 35, 51, 0.3);
+    overflow-y: scroll;   
+}
+
+.conteudo-pedido {
+    display: flex;
+    justify-content: space-between;
+    background-color: #159a9c4b;
+    width: 99%;
+    height: 22px;
+    padding: 5px 5px 0 5px;
+    margin-bottom: 2px; 
+    font-size: 1em;
+    color: black;   
+}
+
+.conteudo-pedido:hover {
+    background-color: #159a9c62;
+     
 }
 
 .div-form-consulta {
@@ -161,6 +201,16 @@
     flex-wrap: wrap;
     width: 100%;
     height: 10%;
+}
+
+.div-elemento-consulta {
+    display: flex;
+    justify-content: space-between;
+    background-color: #159a9c4b;
+    width: 100%;
+    height: 22px;
+    padding: 5px 5px 0 5px;
+    margin-bottom: 2px;
 }
 
 .div-form-conteudo-consulta {
@@ -175,15 +225,6 @@
     border-color: rgba(0, 35, 51, 0.3);
 }
 
-.div-elemento-consulta {
-    display: flex;
-    justify-content: space-between;
-    background-color: #159a9c4b;
-    width: 100%;
-    height: 22px;
-    padding: 5px 5px 0 5px;
-    margin-bottom: 2px;
-}
 
 .div-elemento-consulta:hover {
     background-color: #159a9c62;
@@ -266,7 +307,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    width: 79%;
+    width: 70%;
     height: 30px;
     margin-bottom: 15px;
 }

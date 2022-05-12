@@ -32,7 +32,6 @@
                 const contForm = document.createElement('input');                
                 contForm.setAttribute('type', 'text');
                 contForm.setAttribute('placeholder',''+fornecedor[i]);
-                contForm.classList.add(`input-cadastro${i}`);
                 contForm.classList.add('input-cadastro');
                 divForm.appendChild(contForm);
             }
@@ -84,11 +83,9 @@
         const divListPed = document.createElement('div');
         const btnAddPed = document.createElement('button');
         const line = document.createElement('hr');
-
+        
         divFormPed.classList.add('div-componente');
         divFormPed.classList.add('div-form-ped');
-
-
         divHeaderPed.classList.add('div-input-header-cad');
         divInputCodPed.classList.add('div-input-cod-cad');
         divListPed.classList.add('div-lista-ped');
@@ -99,8 +96,7 @@
             const contForm = document.createElement('input');                
             contForm.setAttribute('type', 'text');
             contForm.setAttribute('placeholder',''+pedidos[i]);
-            contForm.classList.add(`input-cadastro${i}`);
-            contForm.classList.add('input-cadastro');
+            contForm.classList.add('input-pedidos');
             divHeaderPed.appendChild(contForm);
         }
         divFormPed.appendChild(divHeaderPed);
@@ -111,9 +107,8 @@
         const contForm = document.createElement('input');                
         contForm.setAttribute('type', 'text');
         contForm.setAttribute('placeholder',''+pedidos[i]);
-        contForm.classList.add(`input-cadastro3`);
         contForm.classList.add('input-pedidos');
-        contForm.classList.add('input-cadastro');
+        contForm.classList.add('input-item-ped')
         divInputCodPed.appendChild(contForm);
         divInputCodPed.appendChild(btnAddPed);
 
@@ -292,7 +287,6 @@
             btns.forEach(el => {
                 el.remove();
             });
-            console.log('Alo...')
         }
     }
 

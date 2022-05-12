@@ -14,6 +14,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig); 
 
 const itensPedido = [];
+const cliente = [];
+const valorInputs = [];
 
 
 function writeUserData(data, name, el) {
@@ -49,7 +51,6 @@ function writeUserData(data, name, el) {
 
 function enviarData(data, el) {
   if (el === 'pedidos') {  
-    console.log(el);
     const propPedido = {
       nome: data[0],
       CNPJ: data[1],
@@ -140,17 +141,31 @@ function pesquisarDada(valoer, el) {
   });
 }
 
-function listarIntens(el) {
+function criaListaPedido(conteudo) {
   const telaItens = document.querySelector('.div-lista-ped');
-  const inputPed = document.querySelector('.input-pedidos');
+  const content = document.createElement('p');
+  content.classList.add('conteudo-pedido');
+  
+  content.textContent = conteudo;
+  valorInputs.push(conteudo);
+  console.log(valorInputs);
+  telaItens.appendChild(content);
+}
+
+function listarIntens(pedido) {
+  const inputPed = document.querySelector('.input-item-ped');
   const dbRef = ref(getDatabase());
-  get(child(dbRef, `${el}/${inputPed.value}`)).then((snapshot) => {
+  let valor;
+  get(child(dbRef, `${pedido}/${inputPed.value}`)).then((snapshot) => {
     if (snapshot.exists()) {
       const el = Object.values(snapshot.val());
       el.forEach(element => {
-        console.log(element);
-        console.log(val);
+        valor = element.Razaosocial+' ';
+        valor += element.Nomefantasia+' ';
+        valor += element.CNPJ+' ';
+        valor += element.contato+' ';
       });
+      criaListaPedido(valor);
       //alterarElemento(content);  
       inputPed.value = '';
     } else {
@@ -183,17 +198,27 @@ function etiqueta(valor) {
     
 }
 
+function capturaDadosEntrada() {
+  const inputAll = document.querySelectorAll('.input-cadastro');
+  const inputPed = document.querySelector('.input-pedidos');
+  if (inputPed != null) {
+    inputAll.forEach(input => {
+      cliente.push(input.value);
+    });  
+    console.log(cliente);
+    return
+  }
+  inputAll.forEach(input => {
+    valorInputs.push(input.value);
+  });       
+  etiqueta(valorInputs);
+}
+
 document.addEventListener('click', function(evento) {
     
   const el = evento.target;
   if (el.classList.contains('salvar')) {
-    const valor = [];
-    const inputAll = document.querySelectorAll('.input-cadastro');
-    inputAll.forEach(input => {
-      valor.push(input.value);
-    });       
-    etiqueta(valor);
-
+    capturaDadosEntrada();
   }
 
   if (el.classList.contains('btn-form-consulta')) {
