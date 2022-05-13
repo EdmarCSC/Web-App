@@ -14,82 +14,78 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig); 
 
 const itensPedido = [];
-const cliente = [];
-const valorInputs = [];
 
-
-function writeUserData(data, name, el) {
+function gravarPed(endPoint, cod, objValue) {
+  console.log(endPoint);
+  console.log(cod);
+  console.log(objValue);
   const db = getDatabase();
-
-  if (el === 'pedidos') {
-    push(ref(db, `${el}/${name}`), {
-      nome: data.nome,
-      CNPJ: data.CNPJ,
-      contato: data.contato,
-      listaPedido: data.listaPedido
+    push(ref(db, `${endPoint}/${cod}`), {
+      nome: objValue.nome,
+      CNPJ: objValue.CNPJ,
+      contato: objValue.contato,
+      listaPedido: objValue.listaPedido
     });    
-  }else {
-    push(ref(db, `${el}/${name}`), {
-      Razaosocial: data.Razaosocial, 
-        Nomefantasia: data.Nomefantasia,
-        CNPJ: data.CNPJ, 
-        Rua: data.Rua, 
-        numero: data.numero,
-        cidade: data.cidade, 
-        estado: data.estado, 
-        telefone: data.telefone, 
-        email: data.email, 
-        inscricao: data.inscricao,
-        tipo: data.tipo,
-        produto: data.produto, 
-        comprador: data.comprador, 
-        vendedor: data.vendedor
-    });
-    console.log(el);
-  }
 }
 
-function enviarData(data, el) {
-  if (el === 'pedidos') {  
-    const propPedido = {
-      nome: data[0],
-      CNPJ: data[1],
-      contato: data[2],
-      listaPedido: [{
-        descricao: data[0],
-        cod: data[1],
-        data: data[0]
-      }]
-    }
-    writeUserData(propPedido, propPedido.nome, el);
-  }else{
-    const obj = {
-        Razaosocial: data[0], 
-        Nomefantasia: data[1],
-        CNPJ: data[2], 
-        Rua: data[3], 
-        numero: data[4],
-        cidade: data[5], 
-        estado: data[6], 
-        telefone: data[7], 
-        email: data[8], 
-        inscricao: data[9],
-        tipo: data[10],
-        produto: data[11], 
-        comprador: data[12], 
-        vendedor: data[13]
-    }
-    writeUserData(obj, obj.Razaosocial, el);
+function gravarCad(endPoint, cod, objValue) {
+  const db = getDatabase();
+    push(ref(db, `${endPoint}/${cod}`), {
+      Razaosocial: objValue.Razaosocial, 
+        Nomefantasia: objValue.Nomefantasia,
+        CNPJ: objValue.CNPJ, 
+        Rua: objValue.Rua, 
+        numero: objValue.numero,
+        cidade: objValue.cidade, 
+        estado: objValue.estado, 
+        telefone: objValue.telefone, 
+        email: objValue.email, 
+        inscricao: objValue.inscricao,
+        tipo: objValue.tipo,
+        produto: objValue.produto, 
+        comprador: objValue.comprador, 
+        vendedor: objValue.vendedor
+    });
+    console.log(endPoint, cod, objValue);
 }
+
+function enviarDataPed(endPoint, cliente, lista) {
+  const propPedido = {
+    nome: cliente[0],
+    CNPJ: cliente[1],
+    contato: cliente[2],
+    listaPedido: lista
+  }
+  gravarPed(endPoint, propPedido.nome, propPedido);
+  linparInputs();
+}
+
+function enviarDataCad(endPoint, objValue) {
+  const obj = {
+    Razaosocial: objValue[0], 
+    Nomefantasia: objValue[1],
+    CNPJ: objValue[2], 
+    Rua: objValue[3], 
+    numero: objValue[4],
+    cidade: objValue[5], 
+    estado: objValue[6], 
+    telefone: objValue[7], 
+    email: objValue[8], 
+    inscricao: objValue[9],
+    tipo: objValue[10],
+    produto: objValue[11], 
+    comprador: objValue[12], 
+    vendedor: objValue[13]
+  }
+  gravarCad(endPoint, obj.Razaosocial, obj);
   linparInputs();
 }
 
 function linparInputs() {
-  let inputCad = document.querySelectorAll('.input-cadastro');
-    for (i = 0; i < inputCad.length; i++) {
-      let inputCadZerar = document.querySelector(`.input-cadastro${i}`);
-      inputCadZerar.value = '';
-    }
+  let inputCadAll = document.querySelectorAll('.input-cadastro');
+  inputCadAll.forEach(limpData => {
+    limpData.value = '';
+  })
 }
 
 function alterarElemento() {
@@ -117,7 +113,7 @@ function alterarElemento() {
   return
 }
 
-function pesquisarDada(valoer, el) {
+function pesquisarDada(el, valor) {
   let input = document.querySelector('.input-consulta');  
   let content = document.querySelector('.conteudo-consulta');
   const dbRef = ref(getDatabase());
@@ -145,14 +141,14 @@ function criaListaPedido(conteudo) {
   const telaItens = document.querySelector('.div-lista-ped');
   const content = document.createElement('p');
   content.classList.add('conteudo-pedido');
-  
+
   content.textContent = conteudo;
-  valorInputs.push(conteudo);
-  console.log(valorInputs);
+  itensPedido.push(conteudo);
   telaItens.appendChild(content);
+
 }
 
-function listarIntens(pedido) {
+function listarIntensPed(pedido) {
   const inputPed = document.querySelector('.input-item-ped');
   const dbRef = ref(getDatabase());
   let valor;
@@ -177,7 +173,7 @@ function listarIntens(pedido) {
   });
 }
 
-function etiqueta(valor) {
+function etiqueta(content) {
   const etqCadastro = document.querySelector('.titulo-form');
   const etqConsulta = document.querySelector('.div-form-consulta');
   let el = ''; 
@@ -186,28 +182,34 @@ function etiqueta(valor) {
     if (etqCadastro.classList.contains('fornecedor'))  el = 'fornecedores';
     if (etqCadastro.classList.contains('cliente'))  el = 'clientes';
     if (etqCadastro.classList.contains('produto'))  el = 'produtos';
-    if (etqCadastro.classList.contains('pedido'))  el = 'pedidos';
-    enviarData(valor, el);
+    enviarDataCad(el, content);
   }else {
     if (etqCadastro.classList.contains('fornecedor'))  el = 'fornecedores';
     if (etqCadastro.classList.contains('cliente'))  el = 'clientes';
     if (etqCadastro.classList.contains('produto'))  el = 'produtos';
-    if (etqCadastro.classList.contains('pedido'))  el = 'pedidos';
-    pesquisarDada(valor, el);
+    pesquisarDada(el, content);
   }
     
 }
 
 function capturaDadosEntrada() {
+  const divPed = document.querySelector('.div-form-ped');
   const inputAll = document.querySelectorAll('.input-cadastro');
-  const inputPed = document.querySelector('.input-pedidos');
-  if (inputPed != null) {
-    inputAll.forEach(input => {
-      cliente.push(input.value);
-    });  
-    console.log(cliente);
+  const inputPed = document.querySelectorAll('.input-pedidos');
+  const valorInputs = [];
+  const clientePed = [];
+    
+  if (divPed != null) {
+    inputPed.forEach(dadosCli => {
+      clientePed.push(dadosCli.value);      
+    });
+
+    const listaPedido = criaListaPedido('lista'); 
+
+    enviarDataPed('pedidos', clientePed, listaPedido);
     return
   }
+  
   inputAll.forEach(input => {
     valorInputs.push(input.value);
   });       
@@ -226,7 +228,7 @@ document.addEventListener('click', function(evento) {
   }
 
   if (el.classList.contains('btn-add-ped')) {
-    listarIntens('produtos');
+    listarIntensPed('produtos');
 
     //etiqueta(pedido);
   }

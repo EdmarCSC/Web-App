@@ -107,8 +107,7 @@
         const contForm = document.createElement('input');                
         contForm.setAttribute('type', 'text');
         contForm.setAttribute('placeholder',''+pedidos[i]);
-        contForm.classList.add('input-pedidos');
-        contForm.classList.add('input-item-ped')
+        contForm.classList.add('input-item-ped');
         divInputCodPed.appendChild(contForm);
         divInputCodPed.appendChild(btnAddPed);
 
