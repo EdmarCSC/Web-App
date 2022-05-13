@@ -25,7 +25,12 @@ function gravarPed(endPoint, cod, objValue) {
       CNPJ: objValue.CNPJ,
       contato: objValue.contato,
       listaPedido: objValue.listaPedido
-    });    
+    }); 
+  let cont = itensPedido.length    
+    for (i = cont; i > 0; i--) {
+      itensPedido.pop();
+    }
+    console.log(itensPedido);
 }
 
 function gravarCad(endPoint, cod, objValue) {
@@ -46,7 +51,6 @@ function gravarCad(endPoint, cod, objValue) {
         comprador: objValue.comprador, 
         vendedor: objValue.vendedor
     });
-    console.log(endPoint, cod, objValue);
 }
 
 function enviarDataPed(endPoint, cliente, lista) {
@@ -203,10 +207,7 @@ function capturaDadosEntrada() {
     inputPed.forEach(dadosCli => {
       clientePed.push(dadosCli.value);      
     });
-
-    const listaPedido = criaListaPedido('lista'); 
-
-    enviarDataPed('pedidos', clientePed, listaPedido);
+    enviarDataPed('pedidos', clientePed, itensPedido);
     return
   }
   
