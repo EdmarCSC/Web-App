@@ -217,6 +217,47 @@ function capturaDadosEntrada() {
   etiqueta(valorInputs);
 }
 
+function printRelPed() {
+  const bodyDocument = document.querySelector('.print');
+  const headerPrint = document.createElement('div');
+  const bodyPrint = document.createElement('div');
+  const bottonPrint = document.createElement('div');
+  const line = document.createElement('hr');
+  const titulo = document.createElement('h1');
+
+  titulo.textContent = 'DASHBORD';
+
+  headerPrint.appendChild(titulo);
+  bodyPrint.appendChild(headerPrint);
+
+  for (i = 0; i < itensPedido.length; i++){
+    const lineContent = document.createElement('hr');
+    const textBody = document.createElement('p');
+    textBody.textContent = itensPedido[i];
+    textBody.classList.add('text-print');
+    lineContent.classList.add('hi-line-print');
+    bodyPrint.appendChild(textBody);
+    bodyPrint.appendChild(lineContent);
+  }
+
+  bodyPrint.appendChild(bottonPrint);
+
+  headerPrint.classList.add('header-print');
+  titulo.classList.add('titulo-print');
+  line.classList.add('line-print');
+  bodyPrint.classList.add('body-print');
+  bottonPrint.classList.add('botton-print');
+ 
+  bodyDocument.appendChild(bodyPrint);
+
+  print();
+}
+
+document.addEventListener('afterprint', event => { 
+  const bodyDocument = document.querySelector('.printPed');
+  bodyDocument.remove();
+});
+
 document.addEventListener('click', function(evento) {
     
   const el = evento.target;
@@ -230,7 +271,9 @@ document.addEventListener('click', function(evento) {
 
   if (el.classList.contains('btn-add-ped')) {
     listarIntensPed('produtos');
+  }
 
-    //etiqueta(pedido);
+  if (el.classList.contains('btn-print')) {
+    printRelPed();
   }
 });

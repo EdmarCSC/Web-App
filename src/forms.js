@@ -82,6 +82,7 @@
         const divInputCodPed = document.createElement('div');
         const divListPed = document.createElement('div');
         const btnAddPed = document.createElement('button');
+        const btnPrint = document.createElement('button');
         const line = document.createElement('hr');
         
         divFormPed.classList.add('div-componente');
@@ -90,6 +91,7 @@
         divInputCodPed.classList.add('div-input-cod-cad');
         divListPed.classList.add('div-lista-ped');
         btnAddPed.classList.add('btn-add-ped');
+        btnPrint.classList.add('btn-print');
         line.classList.add('div-line-ped');
 
         for (i = 0; i < pedidos.length -1; i++) {
@@ -101,6 +103,7 @@
         }
         divFormPed.appendChild(divHeaderPed);
         btnAddPed.innerHTML = 'Adicionar item';
+        btnPrint.innerHTML = 'Imprimir'
         
         divFormPed.appendChild(line);
 
@@ -109,6 +112,7 @@
         contForm.setAttribute('placeholder',''+pedidos[i]);
         contForm.classList.add('input-item-ped');
         divInputCodPed.appendChild(contForm);
+        divInputCodPed.appendChild(btnPrint);
         divInputCodPed.appendChild(btnAddPed);
 
 
