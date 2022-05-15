@@ -73,16 +73,18 @@
             }
             form.appendChild(divForm);
         }
+
+        botoesForms();
     }
     
 
     function formPedidos() {
+        
         const divFormPed = document.createElement('div');
         const divHeaderPed = document.createElement('div');
         const divInputCodPed = document.createElement('div');
         const divListPed = document.createElement('div');
         const btnAddPed = document.createElement('button');
-        const btnPrint = document.createElement('button');
         const line = document.createElement('hr');
         
         divFormPed.classList.add('div-componente');
@@ -91,8 +93,10 @@
         divInputCodPed.classList.add('div-input-cod-cad');
         divListPed.classList.add('div-lista-ped');
         btnAddPed.classList.add('btn-add-ped');
-        btnPrint.classList.add('btn-print');
         line.classList.add('div-line-ped');
+
+      
+
 
         for (i = 0; i < pedidos.length -1; i++) {
             const contForm = document.createElement('input');                
@@ -101,9 +105,9 @@
             contForm.classList.add('input-pedidos');
             divHeaderPed.appendChild(contForm);
         }
+
         divFormPed.appendChild(divHeaderPed);
         btnAddPed.innerHTML = 'Adicionar item';
-        btnPrint.innerHTML = 'Imprimir'
         
         divFormPed.appendChild(line);
 
@@ -112,15 +116,34 @@
         contForm.setAttribute('placeholder',''+pedidos[i]);
         contForm.classList.add('input-item-ped');
         divInputCodPed.appendChild(contForm);
-        divInputCodPed.appendChild(btnPrint);
-        divInputCodPed.appendChild(btnAddPed);
 
 
-        divFormPed.appendChild(divInputCodPed);
-        
+        divFormPed.appendChild(divInputCodPed);        
         divFormPed.appendChild(divListPed);
 
         form.appendChild(divFormPed);
+
+        botoesForms();
+    }
+
+    function botoesForms() {
+        const formPed = document.querySelector('.form');
+        const divBtnPed = document.createElement('div');
+
+        divBtnPed.classList.add('div-btn-forms');
+
+        const atributoseBtns = ['adicionar', 'imprimir', 'salvar', 'cancelar'];
+        const nomeImagens = ['icon-adicionar.png', 'icon-imprimir.png', 'icon-salvar.png', 'icon-cancelar.png'];
+
+        for (i = 0; i < nomeImagens.length; i++) {
+            const img = document.createElement('img');
+            img.classList.add(atributoseBtns[i]);
+            img.classList.add('icon-forms');
+            img.src = `./img_icones/${nomeImagens[i]}`;
+            divBtnPed.appendChild(img);
+        }
+
+        formPed.appendChild(divBtnPed);
     }
 
     function contentValue () {
@@ -248,7 +271,6 @@
             }else{
                 tituloForm(tituloCad, elemento); 
                 formPedidos(elemento);
-                criaBotton(tituloCad);
             }
         }
     }
@@ -259,7 +281,6 @@
         if (titulo.classList.contains('cadastro')) {       
             formCadastro(elemento);
             tituloForm(titulo, elemento); 
-            criaBotton(titulo);
             return
         }
 
@@ -282,7 +303,7 @@
     function limparPagina() {
         const tituloForm = document.querySelector('.titulo-form');
         const divCenter = document.querySelector('.div-componente');
-        const btns = document.querySelectorAll('.btn-form');
+        const btns = document.querySelectorAll('.div-btn-forms');
 
         if (divCenter != null){
             tituloForm.textContent = '';
@@ -318,7 +339,7 @@
             limparInput();
         }
 
-        if (elemento.classList.contains('btn-add-ped')) {             
+        if (elemento.classList.contains('adicionar')) {             
             limparInput();
         }
     });

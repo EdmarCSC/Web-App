@@ -35,7 +35,7 @@
     flex-direction: column;
     justify-content: flex-start;
     width: 100%;
-    height: 1000px;
+    height: 90vh;
     position: absolute;
     z-index: -2;
     top: 0;
@@ -65,6 +65,7 @@
     align-items: center;
     width: 100%;
     height: 100%;
+    overflow: hidden;
 }
 
 .container-form-top {
@@ -86,7 +87,22 @@
     display: flex;
     justify-content: center;
     width: 91%;
-    height: 90%;
+    height: 4000px;
+    overflow: hidden;
+}
+
+.icon-forms {
+    display: flex;
+    flex-grow: 2em;
+    flex-shrink: 2em;
+    width: 32px;
+    height: 32px;
+    padding: 1em;
+    border-radius: 0 5px 5px 0;
+}
+
+.icon-forms:hover {
+    background-color: #159a9c4b;
 }
 
 .form {
@@ -112,7 +128,6 @@
     border-radius: 6px;
     width: 70em;
     height: 28em;
-    overflow-y: scroll;
 }
 
 .input-cadastro {
@@ -152,8 +167,10 @@
     box-shadow: inset 10px 10px 100px 40px rgba(179, 189, 200, 0.2);
 }
 
+
 .div-form-ped {
     display: flex;
+    flex: 1;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
@@ -161,15 +178,14 @@
     margin-top: 1%;
     background-color: #159a9c4b;
     width: 70em;
-    height: 28em;
+    height: 30em;
     border-radius: 6px;
-    overflow-y: scroll;
 }
 
 .div-input-header-cad {
     display: flex;
     justify-content: centers;
-    width: 100%;
+    width: 90%;
     height: auto;
     flex-wrap: wrap;
     margin: 2px;
@@ -188,7 +204,7 @@
 .div-input-cod-cad {
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 90%;
     padding-left: 2em;
     padding-right: 2em;
 }
@@ -255,7 +271,7 @@
     display: flex;
     align-content: center;
     flex-direction: column;
-    width: 93%;
+    width: 90%;
     height: 10em;
     border-radius: 15px;
     margin: 0.1em;
@@ -264,6 +280,17 @@
     border-style: groove;
     border-color: rgba(0, 35, 51, 0.3);
     overflow-y: scroll;   
+}
+
+.div-btn-forms {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin: 10px 0;
+    order: 2;
+    align-self: flex-end;
+    width: 4em;
+    height: 98%;
 }
 
 .conteudo-pedido {

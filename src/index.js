@@ -221,7 +221,7 @@ function printRelPed() {
   const bodyDocument = document.querySelector('.print');
   const headerPrint = document.createElement('div');
   const bodyPrint = document.createElement('div');
-  const bottonPrint = document.createElement('div');
+  //const bottonPrint = document.createElement('div');
   const line = document.createElement('hr');
   const titulo = document.createElement('h1');
 
@@ -240,23 +240,18 @@ function printRelPed() {
     bodyPrint.appendChild(lineContent);
   }
 
-  bodyPrint.appendChild(bottonPrint);
+  //bodyPrint.appendChild(bottonPrint);
 
   headerPrint.classList.add('header-print');
   titulo.classList.add('titulo-print');
   line.classList.add('line-print');
   bodyPrint.classList.add('body-print');
-  bottonPrint.classList.add('botton-print');
+  //bottonPrint.classList.add('botton-print');
  
   bodyDocument.appendChild(bodyPrint);
 
   print();
 }
-
-document.addEventListener('afterprint', event => { 
-  const bodyDocument = document.querySelector('.printPed');
-  bodyDocument.remove();
-});
 
 document.addEventListener('click', function(evento) {
     
@@ -269,11 +264,11 @@ document.addEventListener('click', function(evento) {
     etiqueta();
   }
 
-  if (el.classList.contains('btn-add-ped')) {
+  if (el.classList.contains('adicionar')) {
     listarIntensPed('produtos');
   }
 
-  if (el.classList.contains('btn-print')) {
+  if (el.classList.contains('imprimir')) {
     printRelPed();
   }
 });
