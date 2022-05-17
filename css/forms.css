@@ -288,6 +288,7 @@
     justify-content: flex-end;
     margin: 10px 0;
     order: 2;
+    padding-bottom: 1em;
     align-self: flex-end;
     width: 4em;
     height: 98%;
