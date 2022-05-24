@@ -16,9 +16,6 @@ const app = initializeApp(firebaseConfig);
 const itensPedido = [];
 
 function gravarPed(endPoint, cod, objValue) {
-  console.log(endPoint);
-  console.log(cod);
-  console.log(objValue);
   const db = getDatabase();
     push(ref(db, `${endPoint}/${cod}`), {
       nome: objValue.nome,
@@ -51,6 +48,20 @@ function gravarCad(endPoint, cod, objValue) {
         comprador: objValue.comprador, 
         vendedor: objValue.vendedor
     });
+}
+
+function gravarCadProd(endPoint, objValue) {
+console.log(endPoint, objValue);
+  const db = getDatabase();
+    for (i = 0; i < dataProdutos.length; i++) {
+      push(ref(db, `${endPoint}/${objValue[i].Codigo}`), {
+        codigo: objValue[i].Codigo, 
+        marca: objValue[i].Marca,
+        descricao: objValue[i].Descricao,
+        medida: objValue[i].Medida, 
+        valor: objValue[i].Valor,   
+      });
+    }
 }
 
 function enviarDataPed(endPoint, cliente, lista) {
@@ -160,10 +171,11 @@ function listarIntensPed(pedido) {
     if (snapshot.exists()) {
       const el = Object.values(snapshot.val());
       el.forEach(element => {
-        valor = element.Razaosocial+' ';
-        valor += element.Nomefantasia+' ';
-        valor += element.CNPJ+' ';
-        valor += element.contato+' ';
+        valor = element.codigo+' ';
+        valor += element.descricao+' ';
+        valor += element.marca+' ';
+        valor += element.medida+' ';
+        valor += element.valor+' ';
       });
       criaListaPedido(valor);
       //alterarElemento(content);  
@@ -196,13 +208,23 @@ function etiqueta(content) {
     
 }
 
-function capturaDadosEntrada() {
+function capturaDadosEntrada(prt) {
   const divPed = document.querySelector('.div-form-ped');
   const inputAll = document.querySelectorAll('.input-cadastro');
   const inputPed = document.querySelectorAll('.input-pedidos');
   const valorInputs = [];
   const clientePed = [];
-    
+
+        
+  if (prt === 'imprimir') {
+    inputPed.forEach(dadosCli => {
+      clientePed.push(dadosCli.value);      
+    });
+    return clientePed;
+  }
+
+
+
   if (divPed != null) {
     inputPed.forEach(dadosCli => {
       clientePed.push(dadosCli.value);      
@@ -218,17 +240,27 @@ function capturaDadosEntrada() {
 }
 
 function printRelPed() {
+  const cli = capturaDadosEntrada('imprimir');
   const bodyDocument = document.querySelector('.print');
   const headerPrint = document.createElement('div');
   const bodyPrint = document.createElement('div');
-  //const bottonPrint = document.createElement('div');
+  const dadosClientePrint = document.createElement('div');
   const line = document.createElement('hr');
+  const lineBody = document.createElement('hr');
   const titulo = document.createElement('h1');
 
   titulo.textContent = 'DASHBORD';
 
   headerPrint.appendChild(titulo);
   bodyPrint.appendChild(headerPrint);
+
+  cli.forEach(d => {
+    const dado = document.createElement('span');
+    dado.innerHTML = d;
+    dadosClientePrint.appendChild(dado);
+    bodyPrint.appendChild(dadosClientePrint);
+    console.log(dado);
+  })
 
   for (i = 0; i < itensPedido.length; i++){
     const lineContent = document.createElement('hr');
@@ -240,13 +272,13 @@ function printRelPed() {
     bodyPrint.appendChild(lineContent);
   }
 
-  //bodyPrint.appendChild(bottonPrint);
 
   headerPrint.classList.add('header-print');
   titulo.classList.add('titulo-print');
   line.classList.add('line-print');
+  lineBody.classList.add('line-body');
   bodyPrint.classList.add('body-print');
-  //bottonPrint.classList.add('botton-print');
+  dadosClientePrint.classList.add('dados-cliente');
  
   bodyDocument.appendChild(bodyPrint);
 
@@ -272,3 +304,4 @@ document.addEventListener('click', function(evento) {
     printRelPed();
   }
 });
+

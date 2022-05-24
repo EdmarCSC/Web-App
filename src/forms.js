@@ -2,22 +2,20 @@
     const menuCadastro = document.querySelector('.menu');
     const form = document.querySelector('form');
     
-    const fornecedor = ['Razão-social', 'Nome-fantasia', 'CNPJ', 'Rua', 
-                        'numero', 'cidade', 'estado', 'telefone', 'e-mail', 'inscricao',
-                         'tipo', 'produto', 'comprador', 'vendedor'
+    const fornecedor = ['Razão-social', 'Nome-fantasia', 'CNPJ', 'Telefone', 
+                        'Celular', 'E-mail', 'Logradouro', 'Numero', 'Bairro', 'Cidade',
+                         'Estado', 'Id-fornecedor'
     ];
     
     const pedidos = ['Nome', 'CNPJ', 'Contato', 'Codigo', 
 
     ];
 
-    const cliente = ['Nome', 'CPF', 'E-MAIL', 'Telefone', 'Telefone', 'Telefone', 'Telefone', 'Telefone',
-                    'Telefone', 'Telefone', 'Telefone', 'Telefone', 'Telefone', 'Telefone', 'Telefone'
+    const cliente = ['Nome-cliente', 'Nome-Fantasia', 'CNPJ', 'Ins-Estadual', 'Telefone', 'E-mail', 'Rua', 'N-casa',
+                    'Bairro', 'Cidade', 'Estado', 'Comprador', 'Celular'
     ];
 
-    const Produto = ['Descrição', 'Marca', 'Modelo', 'Validade', 'Validade', 'Validade'
-                    , 'Validade', 'Validade', 'Validade', 'Validade', 'Validade', 'Validade'
-                    , 'Validade', 'Validade', 'Validade', 'Validade'
+    const Produto = ['Codigo', 'Descricao', 'Marca', 'Medida', 'Valor'
     ];
 
     const btn = ['Pesquisar', 'Salvar', 'Cancelar'];
