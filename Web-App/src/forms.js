@@ -137,7 +137,7 @@
             const img = document.createElement('img');
             img.classList.add(atributoseBtns[i]);
             img.classList.add('icon-forms');
-            img.src = `./img_icones/${nomeImagens[i]}`;
+            img.src = `/img_icones/${nomeImagens[i]}`;
             divBtnPed.appendChild(img);
         }
 
